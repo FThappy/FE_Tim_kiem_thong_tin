@@ -9,7 +9,16 @@ function App() {
   const [input, setInputs] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const [data, setData] = useState();
+  const [selectedType, setSelectedType] = useState(1);
+  const [selectedClassify, setSelectedClassify] = useState(true);
 
+  const handleTypeChange = (e) => {
+    setSelectedType(parseInt(e.target.value, 10));
+  };
+
+  const handleClassifyChange = (e) => {
+    setSelectedClassify(e.target.value === "true");
+  };
   const handleChange = (e) => {
     setInputs(e.target.value);
   };
@@ -21,12 +30,13 @@ function App() {
     }
     const dataSend = {
       query: input,
-      option: false,
+      option: selectedClassify,
+      type: selectedType
     };
     setIsSearch(true);
     try {
       const res = await axios.post(
-        "http://10.13.85.138:8080/cluster",
+        "http://localhost:8082/cluster",
         dataSend,
         {
           headers: {
@@ -58,7 +68,7 @@ function App() {
       setIsSearch(true);
       try {
         const res = await axios.post(
-          "http://10.13.85.138:8080/cluster",
+          "http://localhost:8082/cluster",
           dataSend,
           {
             headers: {
@@ -104,6 +114,27 @@ function App() {
             <BsSearch className="icon" />
           )}
         </button>
+        <div>
+          <label>
+            field:
+            <select value={selectedType} onChange={handleTypeChange}>
+              <option value={1}>Title</option>
+              <option value={2}>Body</option>
+              <option value={3}>Both</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Classify:
+            <select
+              value={selectedClassify.toString()}
+              onChange={handleClassifyChange}
+            >
+              <option value="true">Not classify</option>
+              <option value="false">classify</option>
+            </select>
+          </label>
+        </div>
       </div>
       {data &&
         data.map((item, index) => (
@@ -117,7 +148,10 @@ function App() {
               className="answers"
             />
             <h3 className="answerContainer_distance">
-              Distance : {item.distance}
+              <string>Tags : {item.tags}</string>
+            </h3>
+            <h3 className="answerContainer_distance">
+              Distance/Score : {item.distance}
             </h3>
           </div>
         ))}
