@@ -1,0 +1,62 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  background: url("../public/—Pngtree—wallpaper\ of\ a\ scenic\ mountain_3137681.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container1{
+   width: 100vw;
+  height: auto;
+  background: url("../public/—Pngtree—wallpaper\ of\ a\ scenic\ mountain_3137681.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 5rem;
+}
+.searchContainer{
+  display: flex;
+}
+.inputContainer{
+  height: 3rem;
+  border: none;
+  width: 40rem;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 5px;
+  font-size: 2rem;
+}
+.inputContainer:focus {
+  outline: none;
+}
+.btnContainer{
+  height: 3.6rem;
+  border: none;
+  width: 5rem;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: teal;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon{
+  font-size: 2rem;
+  color: white;
+}
+.answerContainer{
+  width: 60rem;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  background-color: white;
+  padding: 5px;
+}
